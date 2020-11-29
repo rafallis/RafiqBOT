@@ -1,0 +1,22 @@
+{
+  "name": "RafiqBOT",
+  "version": "1.0.0",
+  "description": "Bot to automate fun stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "email": "rafaelfgjardim@gmail.com",
+    "name": "Rafael Jardim",
+    "url": "thecontainerd.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "axios": "^0.21.0",
+    "node-superfetch": "^0.1.10"
+  }
+}

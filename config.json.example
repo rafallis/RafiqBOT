@@ -1,0 +1,6 @@
+{
+  "bot_name": "<YOUR_BOT_NAME>",
+  "prefix": "!",
+  "token": "<YOUR_DISCORD_TOKEN>",
+  "API_CURRENCY_KEY": "<YOUR_CURRENCY_TOKEN>"
+}
