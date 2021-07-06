@@ -1,8 +1,9 @@
 const Axios = require("axios");
 const Discord = require("discord.js");
+const { api_currency_key } = require('../config.json');
+require( 'console-stamp' )( console );
 
 BASE_URL = "https://free.currconv.com/api/v7/"
-API_KEY = "f09b65de22f6dce0b4c4"
 
 module.exports = {
     name: 'curr',
@@ -16,7 +17,7 @@ module.exports = {
         const value = args[2];
 
         const query = `${source}_${destination}`;
-        const currency = Axios.get(`${BASE_URL}convert?q=${query}&compact=ultra&apiKey=${API_KEY}`);
+        const currency = Axios.get(`${BASE_URL}convert?q=${query}&compact=ultra&apiKey=${api_currency_key}`);
 
         const embed = new Discord.MessageEmbed()
             .setColor("GREEN")

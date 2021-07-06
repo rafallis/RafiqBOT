@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const { bot_name, prefix, token } = require('./config.json');
+const {bot_name, prefix, token} = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -20,6 +20,7 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
+    console.log("[" + message.author.id + "]" + message.author.username + " used " + message.content);
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -27,7 +28,7 @@ client.on('message', message => {
 
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-    if(!command) return;
+    if (!command) return;
 
     if (command.guildOnly && message.channel.type === 'dm') {
         return message.reply('I can\'t execute that command inside DMs!');
@@ -43,7 +44,7 @@ client.on('message', message => {
         return message.channel.send(reply);
     }
 
-    if(!cooldowns.has(command.name)) {
+    if (!cooldowns.has(command.name)) {
         cooldowns.set(command.name, new Discord.Collection());
     }
 
@@ -54,7 +55,7 @@ client.on('message', message => {
     if (timestamps.has(message.author.id)) {
         const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
 
-        if(now < expirationTime) {
+        if (now < expirationTime) {
             const timeLeft = (expirationTime - now) / 1000;
             return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
         }
